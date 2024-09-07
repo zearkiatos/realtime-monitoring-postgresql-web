@@ -16,4 +16,6 @@ RUN make install-requirements
 RUN make activate
 RUN make install
 
+EXPOSE 8000
+
 ENTRYPOINT ["sh", "./docker/entrypoint.sh"]
