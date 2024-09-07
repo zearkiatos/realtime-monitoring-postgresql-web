@@ -24,6 +24,15 @@ migration:
 migrate:
 	python3 manage.py migrate
 
+generate:
+	python3 manage.py generate_data
+
+docker-generate:
+	docker exec realtime-monitoring-postgresql make generate
+
+run:
+	python manage.py runserver 0.0.0.0:8000
+
 docker-dev-up:
 	docker compose -f=docker-compose.local.yaml up --build
 
