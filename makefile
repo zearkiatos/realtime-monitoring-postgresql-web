@@ -6,15 +6,26 @@ activate:
 		source venv/bin/activate; \
 	else \
 		 echo "The folder environment doesn't exist"; \
-		 python3 -m venv venv; \
-		 source venv/bin/activate; \
+		 pip3 install pipenv; \
+		 PIPENV_IGNORE_VIRTUALENVS=1 pipenv shell; \
 		 echo "The environment folder was created and the python 🐍 environment was activated"; \
 	fi
 
 install:
-	pipenv install
+	PIPENV_IGNORE_VIRTUALENVS=1 pipenv install
 	sleep 5
-	pipenv shell
+
+install-requirements:
+	pip3 install -r requirements.txt
 
 migration:
 	python3 manage.py makemigrations
+
+migrate:
+	python3 manage.py migrate
+
+docker-dev-up:
+	docker compose -f=docker-compose.local.yaml up --build
+
+docker-dev-down:
+	docker compose -f=docker-compose.local.yaml down

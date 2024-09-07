@@ -1,0 +1,2 @@
+make migration
+make migrate

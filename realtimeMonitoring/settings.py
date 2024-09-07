@@ -12,9 +12,12 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 import os
+from .config import Config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+config = Config()
 
 
 # Quick-start development settings - unsuitable for production
@@ -84,11 +87,11 @@ WSGI_APPLICATION = 'realtimeMonitoring.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'iot_data',
-        'USER': 'dbadmin',
-        'PASSWORD': 'uniandesIOT1234*',
-        'HOST': 'localhost',
-        'PORT': '',
+        'NAME': config.DATABASE_NAME,
+        'USER': config.DATABASE_USER,
+        'PASSWORD': config.DATABASE_PASSWORD,
+        'HOST': config.DATABASE_HOST,
+        'PORT': config.DATABASE_PORT,
     }
 }
 
