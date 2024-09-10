@@ -450,8 +450,6 @@ def get_average_by_date(request, **kwargs):
     selectedData = None
     dateParam = kwargs.get("date", None)
 
-    print(dateParam)
-
     if dateParam != None:
         selectedData = Data.objects.filter(time__gte=dateParam).values('measurement__name').annotate(average=Avg('value'))
     else:
